@@ -1,12 +1,12 @@
 import { connect, connection } from 'mongoose';
-import { DB_URI } from '../config';
+import config from '../config';
 import logger from '../utils/logger';
 
 export const initDBConnection = async (): Promise<void> => {
     logger.info('connecting to mongodb...');
 
     try {
-        await connect(DB_URI, {
+        await connect(config.DB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
