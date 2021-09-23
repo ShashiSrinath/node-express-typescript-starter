@@ -1,4 +1,5 @@
 import { createLogger, format, transports } from 'winston';
+import config from '../config';
 
 const logFormat = format.combine(
     format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss.SSS' }),
@@ -9,7 +10,7 @@ const logger = createLogger({
     transports: [
         new transports.File({
             format: logFormat,
-            filename: './.logs/log.log',
+            filename: `./.logs/${config.LOG_FILE}`,
             maxsize: 5242880,
             maxFiles: 5,
         }),
