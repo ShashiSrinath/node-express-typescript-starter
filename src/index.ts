@@ -1,5 +1,5 @@
 import app from './app';
-import { PORT } from './config';
+import config from './config';
 import logger from './utils/logger';
 import { initDBConnection } from './lib/mongodb';
 import './utils/exitHandler';
@@ -9,8 +9,8 @@ const startServer = async () => {
     await initDBConnection();
 
     //start listening
-    app.listen(PORT, async () => {
-        logger.info(`app started on port ${PORT}`);
+    app.listen(config.PORT, async () => {
+        logger.info(`app started on port ${config.PORT}`);
     });
 };
 
