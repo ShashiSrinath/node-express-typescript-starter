@@ -6,6 +6,7 @@ import router from './router';
 
 const app = express();
 
+
 /* apply middleware */
 app.use(json());
 app.use(httpLogger);
@@ -14,7 +15,7 @@ app.use(httpLogger);
 app.use(router);
 
 //error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res, _next) => {
     if (err instanceof HttpError) {
         res.status(err.status).send(err);
     } else {
@@ -22,7 +23,7 @@ app.use((err, req, res, next) => {
         res.status(500).send(
             process.env.NODE_ENV === 'development'
                 ? err
-                : 'Internal Server Error'
+                : 'Internal Server Error',
         );
     }
 });
