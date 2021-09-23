@@ -6,10 +6,7 @@ export const initDBConnection = async (): Promise<void> => {
     logger.info('connecting to mongodb...');
 
     try {
-        await connect(config.DB_URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        await connect(config.DB_URI);
         logger.info('database connection successful');
     } catch (e) {
         logger.error(e);
