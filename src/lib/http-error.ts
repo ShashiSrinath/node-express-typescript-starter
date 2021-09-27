@@ -9,4 +9,12 @@ export class HttpError extends Error {
         this.message = message;
         if (type) this.type = type;
     }
+
+    toJSON(): {status: number, type?: string, message: string} {
+        return {
+            status: this.status,
+            type: this.type,
+            message: this.message,
+        };
+    }
 }

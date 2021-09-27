@@ -17,7 +17,7 @@ app.use(router);
 //error handler
 app.use((err, req, res, _next) => {
     if (err instanceof HttpError) {
-        res.status(err.status).send(err);
+        res.status(err.status).send(err.toJSON());
     } else {
         logger.error(err);
         res.status(500).send(
